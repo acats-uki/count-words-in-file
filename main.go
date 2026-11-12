@@ -33,5 +33,13 @@ func main() {
 	}
 
 	defer file.Close()
+	
+	cntResults, err := CountWords(file)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failure: Error reading file: %v\n", err)
+		os.Exit(1)
+	}
+
+	PrintTopWords(cntResults, *topWords)
 
 }
